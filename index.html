@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChefIA | Asistente Inteligente de Cocina</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="navbar">
+        <div class="brand">
+            <span class="logo-emoji">🍳</span>
+            <div>
+                <h1>Chef<span>IA</span></h1>
+                <p>Asistente Culinario Inteligente</p>
+            </div>
+        </div>
+
+        <div class="header-controls">
+            <button id="themeToggle" class="btn-secondary" title="Cambiar modo oscuro/claro">🌙 Modo Oscuro</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- CONFIGURACIÓN DE API KEY -->
+        <section class="card api-card">
+            <div class="api-header">
+                <label for="apiKeyInput">🔑 Tu API Key de Google Gemini:</label>
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">Obtener clave gratis ↗</a>
+            </div>
+            <div class="api-input-group">
+                <input type="password" id="apiKeyInput" placeholder="Pega aquí tu API Key (AIzaSy...)">
+                <button type="button" id="toggleKeyBtn" class="btn-secondary">👁️</button>
+            </div>
+            <small class="hint">Tu clave se usa solo en tu navegador para consultar a Gemini y no se sube al código fuente.</small>
+        </section>
+
+        <div class="main-grid">
+            <!-- FORMULARIO DE CONSULTA -->
+            <section class="card form-section">
+                <h2>¿Qué ingredientes tenés hoy?</h2>
+                <form id="assistantForm" novalidate>
+                    <div class="form-group">
+                        <label for="ingredientsInput">Ingredientes disponibles *</label>
+                        <textarea id="ingredientsInput" rows="4" placeholder="Ej: 2 huevos, arroz blanco, media cebolla, queso rallado y tomate..."></textarea>
+                        <span class="error-msg" id="ingredientsError"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mealTypeSelect">Tipo de comida</label>
+                            <select id="mealTypeSelect">
+                                <option value="cualquiera">Cualquiera</option>
+                                <option value="almuerzo o cena">Almuerzo / Cena</option>
+                                <option value="desayuno o merienda">Desayuno / Merienda</option>
+                                <option value="postre dulce">Postre / Algo dulce</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeSelect">Tiempo máximo</label>
+                            <select id="timeSelect">
+                                <option value="15 minutos">Rápido (15 min)</option>
+                                <option value="30 minutos" selected>Normal (30 min)</option>
+                                <option value="1 hora">Elaborado (1 hora)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="extraNotesInput">Restricciones o preferencias (opcional)</label>
+                        <input type="text" id="extraNotesInput" placeholder="Ej: Sin TACC, vegetariano, sin horno...">
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn-primary">
+                        ✨ Generar Receta con IA
+                    </button>
+                </form>
+            </section>
+
+            <!-- ÁREA DE RESPUESTA ACTUAL -->
+            <section class="card response-section">
+                <div class="response-header">
+                    <h2>Receta Sugerida</h2>
+                    <div class="response-actions" id="extraActions" style="display: none;">
+                        <button type="button" id="summarizeBtn" class="btn-chip">📝 Resumir pasos</button>
+                        <button type="button" id="translateBtn" class="btn-chip">🇬🇧 Traducir al Inglés</button>
+                    </div>
+                </div>
+
+                <!-- Estado de carga -->
+                <div id="loader" class="loader-box" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>El chef está pensando una receta con tus ingredientes...</p>
+                </div>
+
+                <!-- Contenedor del resultado -->
+                <div id="responseOutput" class="response-content empty-state">
+                    <p>Completá los ingredientes a la izquierda y presioná <strong>"Generar Receta con IA"</strong> para recibir una propuesta personalizada.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- HISTORIAL DE LA SESIÓN -->
+        <section class="card history-section">
+            <div class="history-header">
+                <h2>🕒 Historial de consultas de esta sesión</h2>
+                <button type="button" id="clearHistoryBtn" class="btn-danger-outline">Limpiar historial</button>
+            </div>
+            <div id="historyList" class="history-list">
+                <p class="empty-history">Todavía no realizaste consultas en esta sesión.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
