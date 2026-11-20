@@ -1,0 +1,359 @@
+:root {
+    --bg-body: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-input: #f1f5f9;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --primary: #ea580c; /* Naranja culinario */
+    --primary-hover: #c2410c;
+    --border: #e2e8f0;
+    --error: #dc2626;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode {
+    --bg-body: #0b1120;
+    --bg-card: #1e293b;
+    --bg-input: #0f172a;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary: #f97316;
+    --primary-hover: #ea580c;
+    --border: #334155;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    transition: background-color 0.25s, color 0.25s;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-emoji {
+    font-size: 2rem;
+}
+
+.brand h1 {
+    font-size: 1.4rem;
+    line-height: 1.2;
+}
+
+.brand h1 span {
+    color: var(--primary);
+}
+
+.brand p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* CONTENEDOR Y TARJETAS */
+.container {
+    max-width: 1150px;
+    margin: 2rem auto;
+    padding: 0 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+/* SECCIÓN API KEY */
+.api-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.api-header a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.api-input-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.hint {
+    display: block;
+    margin-top: 0.4rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* GRILLA PRINCIPAL */
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+h2 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+}
+
+/* FORMULARIO */
+.form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--primary);
+}
+
+input.invalid, textarea.invalid {
+    border-color: var(--error);
+}
+
+.error-msg {
+    color: var(--error);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    min-height: 1rem;
+}
+
+/* BOTONES */
+.btn-primary {
+    width: 100%;
+    padding: 0.85rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    padding: 0.55rem 0.9rem;
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-chip {
+    padding: 0.4rem 0.75rem;
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.btn-chip:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-danger-outline {
+    padding: 0.4rem 0.8rem;
+    background: transparent;
+    color: var(--error);
+    border: 1px solid var(--error);
+    border-radius: 6px;
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+
+/* ÁREA DE RESPUESTA */
+.response-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.response-header h2 {
+    margin-bottom: 0;
+}
+
+.response-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.response-content {
+    background-color: var(--bg-input);
+    padding: 1.2rem;
+    border-radius: 10px;
+    min-height: 260px;
+    white-space: pre-line;
+}
+
+.response-content.empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* SPINNER DE CARGA */
+.loader-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    gap: 1rem;
+    color: var(--text-muted);
+}
+
+.spinner {
+    width: 38px;
+    height: 38px;
+    border: 4px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* HISTORIAL */
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.history-header h2 {
+    margin-bottom: 0;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.history-item {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: var(--bg-input);
+}
+
+.history-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.history-question {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.history-answer {
+    font-size: 0.9rem;
+    white-space: pre-line;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.empty-history {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVE (CELULARES Y TABLETS) */
+@media (max-width: 820px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
